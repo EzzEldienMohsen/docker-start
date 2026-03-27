@@ -1,0 +1,23 @@
+{
+  "name": "docker-start",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev":"nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EzzEldienMohsen/docker-start.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EzzEldienMohsen/docker-start/issues"
+  },
+  "homepage": "https://github.com/EzzEldienMohsen/docker-start#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
