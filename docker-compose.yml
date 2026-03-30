@@ -1,0 +1,29 @@
+version: "5.1.0"
+services:
+  node-app:
+    container_name: ezz
+    build: .
+    volumes:
+      - ./src:/app/src:ro
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+      - NODE_ENV=prod
+      - auth_token=0102201010
+      # you can pass the env file directly using and what is in environment overrides what is in file
+    env_file:
+      - ./.env
+
+
+      # docker compose order
+      
+#  Dockerfile ENV number=1        → container gets number=1
+#            ↓
+#   env_file: number=2             → overwrites, container now has number=2
+#            ↓
+#   environment: number=3          → overwrites, container now has number=3
+#            ↓
+#   shell: docker compose run -e number=4 → overwrites, container now has number=4
+
+#   Final value inside the container: 4
