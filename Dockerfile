@@ -12,7 +12,12 @@ WORKDIR /app
 # then move your needed files to the container 
 COPY package.json .
 # then run the commands you need like install commands
-RUN npm install
+# you pass what ever arg you  want using arg
+ARG NODE_ENV
+RUN if ["${NODE_ENV}" = "prod"];\
+    then npm install --only=production;\
+    else npm install;\
+    fi
 # this is to copy all the files except of those in the docker ignore
 COPY . .
 # copy all of your project file but use dockerignore file to avoid moving unneeded files

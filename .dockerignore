@@ -3,3 +3,4 @@ git/
 Dockerfile
 package-lock.json
 README.md
+docker-compose*

@@ -1,0 +1,12 @@
+version: "5.1.0"
+services:
+  node-app:
+    build:
+      context: .
+      args:
+        - NODE_ENV=dev
+    volumes:
+      - ./src:/app/src:ro
+    environment:
+      - NODE_ENV=dev
+    command: ["npm","run", "dev"]
