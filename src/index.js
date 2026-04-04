@@ -4,7 +4,7 @@ const PORT =process.env.PORT || 4000
 const DB_USERNAME= "root";
 const DB_PASSWORD= "example";
 const DB_PORT=27017;
-const DB_HOST ="172.18.0.3"
+const DB_HOST ="mongo"
 const Uri =`mongodb://${DB_USERNAME}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}`
 console.log("process.env.PORT is ->",process.env.PORT)
 console.log("process.env.NODE_ENV is ->",process.env.NODE_ENV)
