@@ -23,3 +23,9 @@ services:
 #   shell: docker compose run -e number=4 → overwrites, container now has number=4
 
 #   Final value inside the container: 4
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
