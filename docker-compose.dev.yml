@@ -2,7 +2,12 @@ version: "5.1.0"
 services:
   node-app:
     build:
+      # context: the folder Docker sends to the daemon as the build context
+      # (i.e., where it looks for the Dockerfile and any files it COPYs)
+      # "." means the project root — same directory you run docker compose from
       context: .
+      # target: which stage in the multi-stage Dockerfile to stop at
+      # "dev" stage typically has dev dependencies, nodemon, source maps, etc.
       target: dev
     volumes:
       - ./src:/app/src:ro
