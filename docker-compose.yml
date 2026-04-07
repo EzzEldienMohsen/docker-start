@@ -52,6 +52,16 @@ services:
       - 6379:6379
     depends_on:
       - node-app
+  nginx:
+    image: nginx:alpine
+    ports:
+     - "8080:80"
+    # Mount our custom config into the folder nginx reads on startup.
+    # The file replaces nginx's default site configuration.
+    volumes:
+      - ./nginx/default.config:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - node-app
 
 volumes:
   dataDir:
