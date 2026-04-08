@@ -19,6 +19,8 @@
   "homepage": "https://github.com/EzzEldienMohsen/docker-start#readme",
   "dependencies": {
     "express": "^5.2.1",
-    "nodemon": "^3.1.14"
+    "mongoose": "^9.4.1",
+    "nodemon": "^3.1.14",
+    "redis": "^5.11.0"
   }
 }

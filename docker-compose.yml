@@ -10,6 +10,9 @@ services:
       # you can pass the env file directly using and what is in environment overrides what is in file
     env_file:
       - ./.env
+    # depends_on is to make sure that the container does not run before the containers it depends on
+    depends_on:
+      - mongo-express
 
 
       # docker compose order
@@ -23,3 +26,33 @@ services:
 #   shell: docker compose run -e number=4 → overwrites, container now has number=4
 
 #   Final value inside the container: 4
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      - dataDir:/data/db
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
+      ME_CONFIG_BASICAUTH_ENABLED: true
+      ME_CONFIG_BASICAUTH_USERNAME: mongoexpressuser
+      ME_CONFIG_BASICAUTH_PASSWORD: mongoexpresspassword
+    depends_on:
+    - mongo
+  redis:
+    image: redis:alpine
+    ports:
+      - 6379:6379
+    depends_on:
+      - node-app
+
+volumes:
+  dataDir:
+  

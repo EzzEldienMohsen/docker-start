@@ -2,7 +2,13 @@ version: "5.1.0"
 services:
   node-app:
     build:
+      # context: the folder Docker sends to the daemon as the build context
+      # (i.e., where it looks for the Dockerfile and any files it COPYs)
+      # "." means the project root — same directory you run docker compose from
       context: .
+      # target: which stage in the multi-stage Dockerfile to stop at
+      # "prod" stage strips dev dependencies and only keeps what the app needs to run
+      # result is a smaller, leaner image safe to ship to production
       target: prod
     environment:
       - NODE_ENV=prod
